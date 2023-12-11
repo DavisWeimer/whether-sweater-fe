@@ -82,23 +82,23 @@ const Register = () => {
       setMatchPwd('');
     } catch (err) {
       if (!err?.response) {
-          setErrMsg('No Server Response');
+          setErrMsg('No Server Response!');
       } else if (err.response?.status === 409) {
-          setErrMsg('Username Taken');
+          setErrMsg('Username Taken!');
       } else {
-          setErrMsg('Registration Failed')
+          setErrMsg('Registration Failed!')
       }
       errRef.current.focus();
     }
   }
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center h-screen flex-col">
       {!success && (
         <div className="w-full max-w-xs relative">
 
           {/* Error Message */}
-          <p ref={errRef} className={`mb-4 ${errMsg ? 'text-red-500' : 'invisible'}`} aria-live='assertive'>{errMsg}</p>
+          <p ref={errRef} className={`absolute shadow-md mt-4 left-1/2 transform -translate-x-1/2 -translate-y-20 z-20 py-2 px-2 w-3/4 ${errMsg ? 'text-offWhite font-dm-sans-bold text-center border-2 border-yellow-600 bg-darkGray  rounded-xl' : 'invisible'}`} aria-live='assertive'>{errMsg}</p>
 
           {/* Registration Form */}
           <form onSubmit={handleSubmit} className="bg-turq-gradient-to-b border-2 border-turquiose shadow-md rounded-lg px-8 pt-6 pb-8 mb-4">
@@ -182,7 +182,7 @@ const Register = () => {
             {/* Submit Button */}
             <div className="flex items-center justify-between">
               <button disabled={!validEmail || !validPwd || !validMatch}
-                      className="bg-lightGray hover:bg-turquiose text-white font-dm-sans mt-5 py-2 px-4 rounded w-full focus:outline-none focus:shadow-outline disabled:opacity-50 disabled:cursor-not-allowed">
+                      className="bg-lightGray hover:bg-turquiose text-white hover:scale-105 ease-in duration-200 font-dm-sans mt-5 py-2 px-4 rounded w-full focus:outline-none focus:shadow-outline disabled:opacity-50 disabled:cursor-not-allowed">
                 Sign Up
               </button>
             </div>
@@ -191,7 +191,7 @@ const Register = () => {
           {/* Sign In Link */}
           <p className="text-center text-sm font-dm-sans text-offWhite">
             Already have an account?
-            <a href="#" className="inline-block align-baseline font-bold text-sm text-turquiose hover:text-[#287d78] ml-1">Sign In</a>
+            <a href="#" className="inline-block align-baseline font-bold text-sm hover:scale-95 ease-in duration-200 text-turquiose hover:text-[#287d78] ml-1">Sign In</a>
           </p>
         </div>
       )}
