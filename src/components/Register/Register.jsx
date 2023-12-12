@@ -5,11 +5,14 @@ import React from 'react'
 import './Register.css'
 import WhetherLogo from '../../assets/Whether-Sweater-Logo-1.svg'
 import RainyVector from '../../assets/rainy-vector.svg'
+import axios from '../../api/axios'
+
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const REGISTER_URL = '/register'; 
+
+let accessToken;
 
 const Register = () => {
   const userRef = useRef();
@@ -56,7 +59,6 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // if button enabled with JS hack
     const v1 = EMAIL_REGEX.test(user);
     const v2 = PWD_REGEX.test(pwd);
     if (!v1 || !v2) {
@@ -64,27 +66,29 @@ const Register = () => {
         return;
     }
     try {
-      const response = await axios.post(REGISTER_URL,
-        JSON.stringify({ user, pwd }),
+      const response = await axios.post("/signup",
+        JSON.stringify({
+          user: {
+            email: user, 
+            password: pwd 
+          }
+        }),
         {
           headers: { 'Content-Type': 'application/json' },
           withCredentials: true
         }
       );
-      console.log(response?.data);
-      console.log(response?.accessToken);
-      console.log(JSON.stringify(response))
+      console.log(response);
       setSuccess(true);
-      //clear state and controlled inputs
-      //need value attrib on inputs for this
       setUser('');
       setPwd('');
       setMatchPwd('');
     } catch (err) {
+      console.log(err)
       if (!err?.response) {
           setErrMsg('No Server Response!');
       } else if (err.response?.status === 409) {
-          setErrMsg('Username Taken!');
+          setErrMsg('Email Taken!');
       } else {
           setErrMsg('Registration Failed!')
       }
@@ -98,7 +102,7 @@ const Register = () => {
         <div className="w-full max-w-xs relative">
 
           {/* Error Message */}
-          <p ref={errRef} className={`absolute shadow-md mt-4 left-1/2 transform -translate-x-1/2 -translate-y-20 z-20 py-2 px-2 w-3/4 ${errMsg ? 'text-offWhite font-dm-sans-bold text-center border-2 border-yellow-600 bg-darkGray  rounded-xl' : 'invisible'}`} aria-live='assertive'>{errMsg}</p>
+          <p ref={errRef} className={`absolute shadow-md mt-4 left-1/2 transform -translate-x-1/2 -translate-y-20 z-20 py-2 px-2 w-3/4 ${errMsg ? 'text-offWhite font-dm-sans-bold text-center border-2 border-yellow-600 bg-darkGray rounded-xl' : 'invisible'}`} aria-live='assertive'>{errMsg}</p>
 
           {/* Registration Form */}
           <form onSubmit={handleSubmit} className="bg-turq-gradient-to-b border-2 border-turquiose shadow-md rounded-lg px-8 pt-6 pb-8 mb-4">
@@ -191,16 +195,23 @@ const Register = () => {
           {/* Sign In Link */}
           <p className="text-center text-sm font-dm-sans text-offWhite">
             Already have an account?
-            <a href="#" className="inline-block align-baseline font-bold text-sm hover:scale-95 ease-in duration-200 text-turquiose hover:text-[#287d78] ml-1">Sign In</a>
+            <a href="#" className="inline-block align-baseline text-sm hover:scale-95 ease-in duration-200 text-turquiose hover:text-[#287d78] ml-1">Sign In</a>
           </p>
         </div>
       )}
       {success && (
         <div className="w-full max-w-xs">
-          <h1 className="text-lg font-bold mb-4">Success!</h1>
-          <p>
-            <a href="#" className="text-blue-500 hover:text-blue-700">Sign In</a>
-          </p>
+          <section onSubmit={handleSubmit} className="bg-turq-gradient-to-b border-2 border-turquiose shadow-md rounded-lg px-8 pt-6 pb-8 mb-4">
+
+            {/* Logo */}
+            <img src={WhetherLogo} className='mb-6 mt-12' />
+
+            <h1 className="text-lg text-offWhite bg-darkGray border-2 border-turquiose rounded-xl font-dm-sans-bold text-center mb-4">Signed up sucessfully.</h1>
+            
+            <p>
+              <a href="#" className="text-offWhite hover:text-[#287d78] text-center">Sign In</a>
+            </p>
+          </section>
         </div>
       )}
     </div>
