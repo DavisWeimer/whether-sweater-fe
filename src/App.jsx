@@ -5,24 +5,27 @@ import Dashboard from './components/Dashboard/Dashboard'
 import RoadTrips from './components/RoadTrips/RoadTrips'
 import Missing from './components/Missing/Missing'
 import Welcome from './components/Welcome/Welcome'
-import Layout from './Layout'
-import { Routes, Route } from 'react-router-dom'
+import Layout from './components/Layout'
+import RequireAuth from './components/RequireAuth'
+import { Routes, Route, useParams } from 'react-router-dom'
 
 function App() {
-
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
 
         {/* Public Routes */}
         <Route path="/" element={<Welcome />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Register />} />
-        <Route path="/unauthorized" element={<Unauthorized />} />
+        <Route path="login" element={<Login />} />
+        <Route path="signup" element={<Register />} />
+        <Route path="unauthorized" element={<Unauthorized />} />
 
         {/* Restricted Routes */}
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/road-trips" element={<RoadTrips />} />
+        <Route path="users/:userId/" element={<RequireAuth />}>
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="road-trips" element={<RoadTrips />} />
+          <Route path="unauthorized" element={<Unauthorized />} />
+        </Route>
 
         {/* ??? Route */}
         <Route path="/*" element={<Missing />} />
