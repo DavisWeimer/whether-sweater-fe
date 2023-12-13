@@ -16,16 +16,16 @@ function App() {
 
         {/* Public Routes */}
         <Route path="/" element={<Welcome />} />
-        <Route path="login" element={<Login />} />
-        <Route path="signup" element={<Register />} />
-        <Route path="unauthorized" element={<Unauthorized />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Register />} />
+        <Route path="/unauthorized" element={<Unauthorized />} />
 
         {/* Restricted Routes */}
-        <Route path="dashboard" element={<Dashboard />} />
-        <Route path="road-trips" element={<RoadTrips />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/road-trips" element={<RoadTrips />} />
 
         {/* ??? Route */}
-        <Route path="*" element={<Missing />} />
+        <Route path="/*" element={<Missing />} />
 
       </Route>
     </Routes>
