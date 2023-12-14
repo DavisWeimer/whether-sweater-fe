@@ -1,9 +1,9 @@
 import React from 'react'
 import { useState, useEffect, useRef } from 'react'
 import { useNavigate, useLocation, Link } from 'react-router-dom';
-import useAuth from '../../hooks/useAuth'
-import WhetherLogo from '../../assets/Whether-Sweater-Logo-1.svg'
-import axios from '../../api/axios'
+import useAuth from '../hooks/useAuth'
+import WhetherLogo from '../assets/Whether-Sweater-Logo-1.svg'
+import axios from '../api/axios'
 
 const Login = () => {
   const { setAuth } = useAuth();
@@ -27,6 +27,16 @@ const Login = () => {
     setErrMsg('');
   }, [user, pwd])
 
+  const handleLoginSuccess = (userId, token) => {
+    // Store auth details in session storage
+    sessionStorage.setItem('userId', userId);
+    sessionStorage.setItem('token', token);
+  
+    // Update auth state in your context or state management
+    setAuth({ userId, token });
+  };
+  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -43,15 +53,16 @@ const Login = () => {
           withCredentials: true
         }
       );
-      const bearerToken = response?.headers?.authorization;
       console.log(response)
-      const userId = response?.data?.data?.id; 
-      console.log(userId)
-      setAuth({ user, pwd, bearerToken, userId });
+      
+      const bearerToken = response?.headers?.authorization;
+      const userId = response?.data?.data?.id;
+      
+      handleLoginSuccess(userId, bearerToken);
+      // setAuth({ user, pwd, bearerToken });
       setPwd('');
       setUser('');
-
-      navigate(`/users/${userId}/dashboard`);
+      navigate('/dashboard')
 
     } catch(err) {
       if (!err?.response) {
@@ -70,14 +81,13 @@ const Login = () => {
   
   return (
     <section className="flex justify-center items-center h-screen flex-col">
-      <div className="w-full max-w-xs relative">
         <div className="w-full max-w-xs relative">
 
           {/* Error Message */}
           <p ref={errRef} className={`absolute shadow-md mt-4 left-1/2 transform -translate-x-1/2 -translate-y-20 z-20 py-2 px-2 w-3/4 ${errMsg ? 'text-offWhite font-dm-sans-bold text-center border-2 border-yellow-600 bg-darkGray rounded-xl' : 'invisible'}`} aria-live='assertive'>{errMsg}</p>
 
           {/* Registration Form */}
-          <form onSubmit={handleSubmit} className="bg-turq-gradient-to-b border-2 border-turquiose shadow-md rounded-lg px-8 pt-6 pb-8 mb-4">
+          <form onSubmit={handleSubmit} className="bg-turq-gradient-to-b border-2 border-turquiose shadow-md rounded-lg px-8 pt-6 pb-8 mb-4 h-[450px]">
 
             {/* Logo */}
             <img src={WhetherLogo} className='mb-6 mt-12' />
@@ -126,9 +136,8 @@ const Login = () => {
           {/* Sign In Link */}
           <p className="text-center text-sm font-dm-sans text-offWhite">
             Need an account?
-            <a href="#" className="inline-block align-baseline text-sm hover:scale-95 ease-in duration-200 text-turquiose hover:text-[#287d78] ml-1">Sign Up</a>
+            <Link to="/signup" className="inline-block align-baseline text-sm hover:scale-95 ease-in duration-200 text-turquiose hover:text-[#287d78] ml-1">Sign Up</Link>
           </p>
-        </div>
       </div>
     </section>
   )
