@@ -1,20 +1,20 @@
 import { useRef, useState, useEffect } from 'react'
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { faCheck, faTimes, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'  
 import React from 'react'
 import WhetherLogo from '../assets/Whether-Sweater-Logo-1.svg'
 import RainyVector from '../assets/rainy-vector.svg'
 import axios from '../api/axios'
-
+import useRedirectIfAuthenticated from '../hooks/useRedirectIfAuthenticated';
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
-let accessToken;
-
 const Register = () => {
+  useRedirectIfAuthenticated();
+  
   const userRef = useRef();
   const errRef = useRef();
 
@@ -32,6 +32,9 @@ const Register = () => {
 
   const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState(false);
+
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     userRef.current.focus();
@@ -96,6 +99,10 @@ const Register = () => {
     }
   }
 
+  const handleLoginClick = () => {
+    navigate('/login');
+  };
+
   return (
     <div className="flex justify-center items-center h-screen flex-col">
       {!success && (
@@ -105,7 +112,7 @@ const Register = () => {
           <p ref={errRef} className={`absolute shadow-md mt-4 left-1/2 transform -translate-x-1/2 -translate-y-20 z-20 py-2 px-2 w-3/4 ${errMsg ? 'text-offWhite font-dm-sans-bold text-center border-2 border-yellow-600 bg-darkGray rounded-xl' : 'invisible'}`} aria-live='assertive'>{errMsg}</p>
 
           {/* Registration Form */}
-          <form onSubmit={handleSubmit} className="bg-turq-gradient-to-b border-2 border-turquiose shadow-md rounded-lg px-8 pt-6 pb-8 mb-4 h-[450px]">
+          <form onSubmit={handleSubmit} className="bg-turq-gradient-to-b border-2 border-turquiose shadow-md space-y-4 rounded-lg px-8 pt-6 pb-8 mb-4 h-[450px]">
 
             {/* Logo */}
             <img src={WhetherLogo} className='mb-6 mt-12' />
@@ -200,19 +207,30 @@ const Register = () => {
         </div>
       )}
       {success && (
-        <div className="w-full max-w-xs">
-          <section onSubmit={handleSubmit} className="bg-turq-gradient-to-b border-2 border-turquiose shadow-md rounded-lg px-8 pt-6 pb-8 mb-4">
+        <section className="flex justify-center items-center h-screen flex-col">
+          <div className="w-full max-w-xs">
+            <div className="bg-turq-gradient-to-b border-2 border-turquiose shadow-md rounded-lg px-8 pt-6 pb-8 mb-4 h-[450px]">
 
-            {/* Logo */}
-            <img src={WhetherLogo} className='mb-6 mt-12' />
+              {/* Logo */}
+              <img src={WhetherLogo} className='mb-8 mt-12' />
 
-            <h1 className="text-lg text-offWhite bg-darkGray border-2 border-turquiose rounded-xl font-dm-sans-bold text-center mb-4">Signed up sucessfully.</h1>
-            
-            <p>
-              <a href="#" className="text-offWhite hover:text-[#287d78] text-center">Sign In</a>
-            </p>
-          </section>
-        </div>
+              <h1 className="text-lg text-offWhite bg-darkGray border-2 border-green-500 rounded-xl font-dm-sans-bold text-center mb-20">Signed up sucessfully.</h1>
+              
+              {/* Login Button */}
+              <div className="flex items-center space-y-4 justify-between">
+                <button onClick={handleLoginClick} className="bg-lightGray hover:bg-turquiose text-white hover:scale-105 ease-in duration-200 font-dm-sans text-lg py-3 px-4 rounded w-full focus:outline-none focus:shadow-outline disabled:opacity-50 disabled:cursor-not-allowed">
+                  Log In
+                </button>
+
+              </div>
+            </div>
+              {/* Welcome Link */}
+              <p className="text-center text-sm font-dm-sans text-offWhite">
+                Return to
+                <Link to="/" className="inline-block align-baseline text-sm hover:scale-95 ease-in duration-200 text-turquiose hover:text-[#287d78] ml-1">Welcome</Link>
+              </p>
+          </div>
+        </section>
       )}
     </div>
   );
