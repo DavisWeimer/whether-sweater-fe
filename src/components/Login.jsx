@@ -4,8 +4,11 @@ import { useNavigate, useLocation, Link } from 'react-router-dom';
 import useAuth from '../hooks/useAuth'
 import WhetherLogo from '../assets/Whether-Sweater-Logo-1.svg'
 import axios from '../api/axios'
+import useRedirectIfAuthenticated from '../hooks/useRedirectIfAuthenticated';
 
 const Login = () => {
+  useRedirectIfAuthenticated();
+  
   const { setAuth } = useAuth();
 
   const navigate = useNavigate();
@@ -27,16 +30,6 @@ const Login = () => {
     setErrMsg('');
   }, [user, pwd])
 
-  const handleLoginSuccess = (userId, token) => {
-    // Store auth details in session storage
-    sessionStorage.setItem('userId', userId);
-    sessionStorage.setItem('token', token);
-  
-    // Update auth state in your context or state management
-    setAuth({ userId, token });
-  };
-  
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -56,16 +49,16 @@ const Login = () => {
       console.log(response)
       
       const bearerToken = response?.headers?.authorization;
-      const userId = response?.data?.data?.id;
-      
-      handleLoginSuccess(userId, bearerToken);
-      // setAuth({ user, pwd, bearerToken });
+      const loggedInUser = response?.data?.data;
+
+      setAuth({ loggedInUser, bearerToken });
       setPwd('');
       setUser('');
       navigate('/dashboard')
 
     } catch(err) {
       if (!err?.response) {
+        console.log(err)
         setErrMsg('No Server Response')
       } else if (err.response?.status === 400) {
         setErrMsg('Missing Email or Password')

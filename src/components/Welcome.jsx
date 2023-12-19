@@ -1,10 +1,12 @@
 import React from 'react'
 import WhetherLogo from '../assets/Whether-Sweater-Logo-1.svg'
+import useRedirectIfAuthenticated from '../hooks/useRedirectIfAuthenticated'
 import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-
 const Welcome = () => {
+  useRedirectIfAuthenticated();
+  
   const navigate = useNavigate();
 
   const handleLoginClick = () => {
