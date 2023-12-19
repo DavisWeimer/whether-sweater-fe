@@ -8,6 +8,7 @@ export default {
     extend: {
       backgroundImage: {
         'turq-gradient-to-b': 'linear-gradient(180deg, rgba(0, 198, 186, 0.20) 0%, rgba(32, 32, 32, 0.20) 100%)',
+        'turq-gradient-to-t': 'linear-gradient(0deg, rgba(0, 198, 186, 0.20) 0%, rgba(32, 32, 32, 0.20) 100%)',
       },
       colors: {
         offWhite: '#E4E2DD',
