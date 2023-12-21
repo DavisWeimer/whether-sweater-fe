@@ -5,7 +5,7 @@ const deployUrl = import.meta.env.VITE_DEPLOY_URL
 const isProduction = window.location.hostname !== 'localhost';
 
 const axiosInstance = axios.create({
-    baseURL: isProduction ? deployUrl : apiUrl
+    baseURL: apiUrl
 });
 
 export default axiosInstance;
