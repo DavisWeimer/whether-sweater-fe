@@ -1,14 +1,48 @@
-import React, { useContext } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import AuthContext from '../context/AuthProvider'; 
 import axios from '../api/axios';
+import Daily from './Daily';
+import Forecast from './Forecast';
+import RoadTrips from './RoadTrips';
+import NavBar from './NavBar';
 
 const Dashboard = () => {
   const { auth, setAuth } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [weather, setWeather] = useState([]);
+  const errRef = useRef();
+  const [errMsg, setErrMsg] = useState('');
+
+  useEffect(() => {
+    const fetchWeather = async () => {
+      try {
+        // const response = await axios.get("/api/v0/forecast", {
+        //   params: { location: "denver,co" },
+        //   headers: { Authorization: auth.bearerToken },
+        //   withCredentials: true
+        // });
+        // setWeather(response);
+        // console.log(response)
+      } catch (err) {
+        if (!err?.response) {
+          setErrMsg('No Server Response');
+        } else {
+          setErrMsg('Request Failed');
+        }
+      }
+    };
+
+    // fetchWeather();
+
+    const intervalId = setInterval(() => {
+      fetchWeather();
+    }, 60000);
+
+    return () => clearInterval(intervalId); 
+  }, [auth.bearerToken]);
 
   const handleLogout = async () => {
-    console.log(auth.bearerToken)
     try {
       await axios.delete('/logout', {
         headers: { Authorization: auth.bearerToken },
@@ -31,41 +65,22 @@ const Dashboard = () => {
 
   return (
     <section className='max-w-[1040px] m-auto px-4'>
-      <div className="shadow-md bg-darkGray rounded-b-2xl p-5 mx-auto mb-4">
-        NavBar
-      </div>
+      <NavBar 
+        logOut={handleLogout}
+      />
       <section className="grid md:grid-cols-2 gap-4 mb-4">
-        <div className="min-h-[20em] bg-turq-gradient-to-t shadow-md rounded-2xl border-2 border-turquiose">
-          Daily
-        </div>
-        <div className="min-h-[20em] bg-turq-gradient-to-t shadow-md rounded-2xl border-2 border-turquiose">
-          Details
-        </div>
-        <div className="min-h-[30em] row-span-2 md:col-span-2 bg-turq-gradient-to-b shadow-md rounded-2xl border-2 border-turquiose">
-          Forecast
-        </div>
+        <Daily 
+          weatherData={weather}
+        />
+        <RoadTrips
+          authCreds={auth} 
+        />
+        <Forecast 
+          className="min-h-[30em] row-span-2 md:col-span-2 bg-turq-gradient-to-b shadow-md rounded-2xl border-2 border-turquiose"
+        />
       </section>
     </section>
   );
 };
 
 export default Dashboard;
-
-
-{/* <section className='max-w-[1040px] m-auto p-4 py-16'>
-      <div className='grid sm:grid-cols-2 gap-12 bg-turq-gradient-to-b'>
-      Daily
-      Daily
-      Daily
-      </div>
-      <div className='grid sm:grid-cols-2 gap-12 bg-turq-gradient-to-b'>
-      Details
-      Details
-      Details
-      </div>
-      <div className='grid sm:grid-cols-2 gap-12 bg-turq-gradient-to-t'>
-      Forecast
-      Forecast
-      Forecast
-      </div>
-    </section> */}
