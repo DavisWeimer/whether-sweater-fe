@@ -17,13 +17,13 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchWeather = async () => {
       try {
-        // const response = await axios.get("/api/v0/forecast", {
-        //   params: { location: "denver,co" },
-        //   headers: { Authorization: auth.bearerToken },
-        //   withCredentials: true
-        // });
-        // setWeather(response);
-        // console.log(response)
+        const response = await axios.get("/api/v0/forecast", {
+          params: { location: "denver,co" },
+          headers: { Authorization: auth.bearerToken },
+          withCredentials: true
+        });
+        setWeather(response.data.data.attributes); 
+        console.log("weather data", weather);
       } catch (err) {
         if (!err?.response) {
           setErrMsg('No Server Response');
@@ -33,14 +33,8 @@ const Dashboard = () => {
       }
     };
 
-    // fetchWeather();
-
-    const intervalId = setInterval(() => {
-      fetchWeather();
-    }, 60000);
-
-    return () => clearInterval(intervalId); 
-  }, [auth.bearerToken]);
+    fetchWeather();
+  }, [auth.bearerToken]); 
 
   const handleLogout = async () => {
     try {
@@ -75,7 +69,8 @@ const Dashboard = () => {
         <RoadTrips
           authCreds={auth} 
         />
-        <Forecast 
+        <Forecast
+          weatherData={weather}
           className="min-h-[30em] row-span-2 md:col-span-2 bg-turq-gradient-to-b shadow-md rounded-2xl border-2 border-turquiose"
         />
       </section>
