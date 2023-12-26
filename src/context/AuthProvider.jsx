@@ -12,6 +12,22 @@ export const AuthProvider = ({ children }) => {
     sessionStorage.setItem("authData", JSON.stringify(auth));
   }, [auth]);
 
+  useEffect(() => {
+    const logout = () => {
+      setAuth({});
+      sessionStorage.removeItem("authData"); 
+    };
+
+    let timer;
+    if (auth?.bearerToken) {
+      timer = setTimeout(logout, 5 * 60 * 1000);
+    }
+
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
+  }, [auth]);
+
   return (
     <AuthContext.Provider value={{ auth, setAuth }}>
       {children}
