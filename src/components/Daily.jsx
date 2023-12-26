@@ -4,9 +4,6 @@ import TempUp from '../assets/Up Arrow.svg'
 import TempDown from '../assets/Down Arrow.svg'
 
 function Daily({ weatherData }) {
-  const lastUpdated = weatherData.current_weather?.last_updated;
-  const lastUpdatedTime = lastUpdated.split(' ')[1];
-
   console.log("weather props", weatherData)
   return (
     <div className="min-h-[20em] font-dm-sans bg-turq-gradient-to-t shadow-md rounded-2xl border-2 border-turquiose justify-evenly items-center inline-flex">
@@ -35,7 +32,7 @@ function Daily({ weatherData }) {
         </div>
         <div className="py-4 pr-4 rounded-full flex-col justify-start items-center gap-3 text-offWhite inline-flex">
             <div className="text-2xl lg:text-4xl ">Denver, CO</div>
-            <div className="text-xl font-normal ">Updated: {lastUpdatedTime}</div>
+            <div className="text-xl font-normal ">{weatherData.current_weather?.last_updated}</div>
             <div className="text-6xl md:text-8xl font-normal ">{weatherData.current_weather?.temperature}°</div>
             <div className="justify-start text-lg items-center gap-4 inline-flex">
             <div className="flex items-center gap-1"> 
