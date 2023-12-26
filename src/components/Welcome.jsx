@@ -1,5 +1,6 @@
 import React from 'react'
 import WhetherLogo from '../assets/Whether-Sweater-Logo-1.svg'
+import DavisLogo from '../assets/davis.svg'
 import useRedirectIfAuthenticated from '../hooks/useRedirectIfAuthenticated'
 import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom';
@@ -44,9 +45,11 @@ const Welcome = () => {
               </button>
             </div>
           </div>
-          <p className="text-center text-sm font-dm-sans text-offWhite">
-            Built by  
-            <a href="https://www.dw-portfolio.com/" target="_blank" rel="noopener noreferrer" className="inline-block align-baseline text-sm hover:scale-95 ease-in duration-200 text-turquiose hover:text-[#287d78] ml-1">Davis Weimer</a>
+          <p className="flex justify-center items-center text-sm font-dm-sans text-offWhite">
+            Built by
+            <a href="https://www.dw-portfolio.com/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center hover:scale-95 ease-in duration-200">
+              <img src={DavisLogo} alt="Davis Weimer Logo" className="w-[70px] h-auto ml-1 mt-[2px]" style={{fill: "#00C6BA"}}/>
+            </a>
           </p>
       </div>
     </section>

@@ -58,7 +58,6 @@ const Login = () => {
 
     } catch(err) {
       if (!err?.response) {
-        console.log(err)
         setErrMsg('No Server Response')
       } else if (err.response?.status === 400) {
         setErrMsg('Missing Email or Password')
