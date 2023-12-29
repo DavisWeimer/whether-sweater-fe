@@ -49,7 +49,7 @@ function Forecast({ weatherData, loading, backgroundPic, backgroundLoading }) {
           </div>
           <div className="h-[130px] lg:h-[150px] flex-col justify-between items-start inline-flex">
             {weatherData.daily_weather?.map((daily, index) => (
-              <div key={index} className="justify-center items-center gap-2 inline-flex">
+              <div key={index} className="justify-start items-center gap-2 inline-flex">
                 <img src={TempUp} className='w-[16px]'/>
                 <div>{daily.max_temp}°</div>
               </div>
