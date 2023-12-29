@@ -5,6 +5,7 @@ import useAuth from '../hooks/useAuth'
 import WhetherLogo from '../assets/Whether-Sweater-Logo-1.svg'
 import axios from '../api/axios'
 import useRedirectIfAuthenticated from '../hooks/useRedirectIfAuthenticated';
+import { TailSpin } from 'react-loader-spinner';
 
 const Login = () => {
   useRedirectIfAuthenticated();
@@ -21,7 +22,8 @@ const Login = () => {
   const [user, setUser] = useState('');
   const [pwd, setPwd] = useState('');
   const [errMsg, setErrMsg] = useState('');
-
+  const [isLoading, setIsLoading] = useState(false);
+  
   useEffect(() => {
     userRef.current.focus();
   }, [])
@@ -34,6 +36,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
+      setIsLoading(true);
       const response = await axios.post("/login",
         JSON.stringify({
           user: {
@@ -46,7 +49,6 @@ const Login = () => {
           withCredentials: true
         }
       );
-      console.log(response)
       
       const bearerToken = response?.headers?.authorization;
       const loggedInUser = response?.data?.data;
@@ -55,6 +57,7 @@ const Login = () => {
       setPwd('');
       setUser('');
       navigate('/dashboard')
+      setIsLoading(false);
 
     } catch(err) {
       if (!err?.response) {
@@ -119,8 +122,15 @@ const Login = () => {
 
             {/* Submit Button */}
             <div className="flex items-center justify-between">
-              <button disabled={!user && !pwd} className="bg-lightGray hover:bg-turquiose text-white hover:scale-105 ease-in duration-200 font-dm-sans mt-5 py-2 px-4 rounded w-full focus:outline-none focus:shadow-outline disabled:opacity-50 disabled:cursor-not-allowed">
-                Submit
+              <button disabled={!user && !pwd} className="flex justify-center bg-lightGray hover:bg-turquiose text-white hover:scale-105 ease-in duration-200 font-dm-sans mt-5 py-2 px-4 rounded w-full focus:outline-none focus:shadow-outline disabled:opacity-50 disabled:cursor-not-allowed">
+                {isLoading ? 
+                  <TailSpin
+                    height="24"
+                    width="24"
+                    color="#E4E2DD"
+                    ariaLabel="tail-spin-loading"
+                    radius="1"
+                  /> : 'Submit'}
               </button>
             </div>
           </form>

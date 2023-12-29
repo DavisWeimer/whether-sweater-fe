@@ -1,7 +1,8 @@
 import { useRef, useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom';
 import { faCheck, faTimes, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'  
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { TailSpin } from 'react-loader-spinner';  
 import React from 'react'
 import WhetherLogo from '../assets/Whether-Sweater-Logo-1.svg'
 import RainyVector from '../assets/rainy-vector.svg'
@@ -21,6 +22,7 @@ const Register = () => {
   const [user, setUser] = useState('');
   const [validEmail, setValidEmail] = useState(false);
   const [userFocus, setUserFocus] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [pwd, setPwd] = useState('');
   const [validPwd, setValidPwd] = useState(false);
@@ -69,6 +71,7 @@ const Register = () => {
         return;
     }
     try {
+      setIsLoading(true);
       const response = await axios.post("/signup",
         JSON.stringify({
           user: {
@@ -86,6 +89,8 @@ const Register = () => {
       setUser('');
       setPwd('');
       setMatchPwd('');
+      setIsLoading(false);
+
     } catch (err) {
       console.log(err)
       if (!err?.response) {
@@ -100,7 +105,9 @@ const Register = () => {
   }
 
   const handleLoginClick = () => {
+    setIsLoading(true);
     navigate('/login');
+    setIsLoading(false);
   };
 
   return (
@@ -193,8 +200,15 @@ const Register = () => {
             {/* Submit Button */}
             <div className="flex items-center justify-between">
               <button disabled={!validEmail || !validPwd || !validMatch}
-                      className="bg-lightGray hover:bg-turquiose text-white hover:scale-105 ease-in duration-200 font-dm-sans mt-5 py-2 px-4 rounded w-full focus:outline-none focus:shadow-outline disabled:opacity-50 disabled:cursor-not-allowed">
-                Sign Up
+                      className="flex justify-center bg-lightGray hover:bg-turquiose text-white hover:scale-105 ease-in duration-200 font-dm-sans mt-5 py-2 px-4 rounded w-full focus:outline-none focus:shadow-outline disabled:opacity-50 disabled:cursor-not-allowed">
+                {isLoading ? 
+                  <TailSpin
+                    height="24"
+                    width="24"
+                    color="#E4E2DD"
+                    ariaLabel="tail-spin-loading"
+                    radius="1"
+                  /> : 'Sign Up'}
               </button>
             </div>
           </form>
@@ -218,8 +232,15 @@ const Register = () => {
               
               {/* Login Button */}
               <div className="flex items-center space-y-4 justify-between">
-                <button onClick={handleLoginClick} className="bg-lightGray hover:bg-turquiose text-white hover:scale-105 ease-in duration-200 font-dm-sans text-lg py-3 px-4 rounded w-full focus:outline-none focus:shadow-outline disabled:opacity-50 disabled:cursor-not-allowed">
-                  Log In
+                <button onClick={handleLoginClick} className="flex justify-center bg-lightGray hover:bg-turquiose text-white hover:scale-105 ease-in duration-200 font-dm-sans text-lg py-3 px-4 rounded w-full focus:outline-none focus:shadow-outline disabled:opacity-50 disabled:cursor-not-allowed">
+                {isLoading ? 
+                  <TailSpin
+                    height="24"
+                    width="24"
+                    color="#E4E2DD"
+                    ariaLabel="tail-spin-loading"
+                    radius="1"
+                  /> : 'Log In'}
                 </button>
 
               </div>

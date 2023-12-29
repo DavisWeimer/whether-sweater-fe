@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }) => {
 
     let timer;
     if (auth?.bearerToken) {
-      timer = setTimeout(logout, 5 * 60 * 1000);
+      timer = setTimeout(logout, 15 * 60 * 1000);
     }
 
     return () => {
