@@ -1,8 +1,8 @@
 # Whether, Sweater? App
 ![Commits](https://badgen.net/github/last-commit/DavisWeimer/whether-sweater-fe?icon=github)
 
-Whether, Sweater? App is built to use endpoints from a BE Rails app looking to:
-- Register, Authenticate, & Login/Logout Users
+Whether, Sweater? App is built to use endpoints from a BE Rails REST API looking to:
+- Register, Authenticate, & Login/Logout Users through JWT sessioning
 - Allow selection of a city to see the Weather Forecast
 - Allow Creation of a Road Trip to show travel time and weather at the destination
 
