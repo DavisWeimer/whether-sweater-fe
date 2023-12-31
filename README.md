@@ -1,8 +1,25 @@
-# React + Vite
+# Whether, Sweater? App
+![Commits](https://badgen.net/github/last-commit/DavisWeimer/whether-sweater-fe?icon=github)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Whether, Sweater? App is built to use endpoints from a BE Rails app looking to:
+- Register, Authenticate, & Login/Logout Users
+- Allow selection of a city to see the Weather Forecast
+- Allow Creation of a Road Trip to show travel time and weather at the destination
 
-Currently, two official plugins are available:
+## Node/React version<br>
+`Node v21.2.0`<br>
+`React ^18.2.0`<br>
+`TailwindCSS ^3.3.6`<br>
+`Vite ^5.0.0`<br>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Built with<br>
+<img src="https://skillicons.dev/icons?i=react,nodejs,vite,tailwind,vscode,vercel" alt="My languages"/>
+
+Site Preview
+-------------
+![app-demo-gif](https://github.com/DavisWeimer/whether-sweater-fe/assets/128326999/8a16b980-f958-4679-9576-1548d069fd70)
+
+
+Check it out here:
+-------------
+#### https://whether-sweater-fe.vercel.app/
