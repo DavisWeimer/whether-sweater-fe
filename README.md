@@ -13,7 +13,7 @@ Whether, Sweater? App is built to use endpoints from a BE Rails REST API looking
 `Vite ^5.0.0`<br>
 
 ## Built with<br>
-<img src="https://skillicons.dev/icons?i=react,nodejs,vite,tailwind,vscode,vercel" alt="My languages"/>
+<img src="https://skillicons.dev/icons?i=react,nodejs,vite,tailwind,vscode,vercel,figma" alt="My languages"/>
 
 Site Preview
 -------------
