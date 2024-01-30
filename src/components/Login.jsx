@@ -62,12 +62,16 @@ const Login = () => {
     } catch(err) {
       if (!err?.response) {
         setErrMsg('No Server Response')
+        setIsLoading(false);
       } else if (err.response?.status === 400) {
         setErrMsg('Missing Email or Password')
+        setIsLoading(false);
       } else if (err.response?.status === 401) {
         setErrMsg('Unauthorized ⚠️')
+        setIsLoading(false);
       } else {
         setErrMsg('Login Failed')
+        setIsLoading(false);
       }
       errRef.current.focus();
     }

@@ -95,10 +95,13 @@ const Register = () => {
       console.log(err)
       if (!err?.response) {
           setErrMsg('No Server Response!');
+          setIsLoading(false);
       } else if (err.response?.status === 409) {
           setErrMsg('Email Taken!');
+          setIsLoading(false);
       } else {
           setErrMsg('Registration Failed!')
+          setIsLoading(false);
       }
       errRef.current.focus();
     }
