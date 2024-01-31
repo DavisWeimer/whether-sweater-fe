@@ -49,7 +49,7 @@ const Login = () => {
           withCredentials: true
         }
       );
-      
+
       const bearerToken = response?.headers?.authorization;
       const loggedInUser = response?.data?.data;
 
@@ -67,7 +67,7 @@ const Login = () => {
         setErrMsg('Missing Email or Password')
         setIsLoading(false);
       } else if (err.response?.status === 401) {
-        setErrMsg('Unauthorized ⚠️')
+        setErrMsg('Invalid email or password')
         setIsLoading(false);
       } else {
         setErrMsg('Login Failed')
