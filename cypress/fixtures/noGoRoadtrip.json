@@ -1,0 +1,12 @@
+{
+  "data": {
+      "id": null,
+      "type": "road_trip",
+      "attributes": {
+          "start_city": "Denver,CO",
+          "end_city": "khjashkjfadjkhfad",
+          "travel_time": "Impossible",
+          "weather_at_eta": "N/A"
+      }
+  }
+}
