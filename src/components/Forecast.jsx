@@ -14,7 +14,7 @@ function Forecast({ weatherData, loading, backgroundPic, backgroundLoading }) {
   };
 
   return (
-    <main className="min-h-[30em] row-span-2 md:col-span-2 bg-turq-gradient-to-b shadow-md rounded-2xl border-2 border-turquiose flex flex-col lg:flex-row lg:flex-wrap justify-center items-center gap-4 lg:gap-10 py-">
+    <main className="min-h-[28em] row-span-2 md:col-span-2 bg-turq-gradient-to-b shadow-md rounded-2xl border-2 border-turquiose flex flex-col lg:flex-row lg:flex-wrap justify-center items-center gap-4 lg:gap-10 pt-2">
     {loading ? 
     <ProgressBar
       barColor="#00C6BA"
@@ -76,7 +76,7 @@ function Forecast({ weatherData, loading, backgroundPic, backgroundLoading }) {
           wrapperClass=""
         /> :
       <div className="w-5/6 h-1/2 lg:w-[420px] lg:h-[340px] relative rounded-[5px] overflow-hidden shadow lg:order-last mb-3">
-        <img src={backgroundPic.image?.image_url}  className="absolute w-full h-full object-cover" />
+        <img src={backgroundPic.image?.image_url}  className="absolute w-full h-full object-cover" alt='bg-img' />
       </div>}
     </>}
     </main>
