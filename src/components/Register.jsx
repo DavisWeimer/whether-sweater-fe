@@ -44,15 +44,11 @@ const Register = () => {
 
   useEffect(() => {
     const result = EMAIL_REGEX.test(user);
-    console.log("Valid? ", result);
-    console.log("Email: ", user);
     setValidEmail(result);
   }, [user])
 
   useEffect(() => {
     const result = PWD_REGEX.test(pwd);
-    console.log("Valid? ", result);
-    console.log("Password: ", pwd);
     setValidPwd(result);
     const match = pwd === matchPwd;
     setValidMatch(match);
@@ -84,7 +80,6 @@ const Register = () => {
           withCredentials: true
         }
       );
-      console.log(response);
       setSuccess(true);
       setUser('');
       setPwd('');
@@ -92,13 +87,15 @@ const Register = () => {
       setIsLoading(false);
 
     } catch (err) {
-      console.log(err)
       if (!err?.response) {
-          setErrMsg('No Server Response!');
+          setErrMsg('No Server Response');
+          setIsLoading(false);
       } else if (err.response?.status === 409) {
-          setErrMsg('Email Taken!');
+          setErrMsg('Email Taken');
+          setIsLoading(false);
       } else {
-          setErrMsg('Registration Failed!')
+          setErrMsg('Registration Failed')
+          setIsLoading(false);
       }
       errRef.current.focus();
     }
@@ -111,7 +108,7 @@ const Register = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen flex-col">
+    <section className="flex justify-center items-center h-screen flex-col">
       {!success && (
         <div className="w-full max-w-xs relative">
 
@@ -228,7 +225,7 @@ const Register = () => {
               {/* Logo */}
               <img src={WhetherLogo} className='mb-8 mt-12' />
 
-              <h1 className="text-lg text-offWhite bg-darkGray border-2 border-green-500 rounded-xl font-dm-sans-bold text-center mb-20">Signed up sucessfully.</h1>
+              <h1 className="text-lg text-offWhite bg-darkGray border-2 border-turquiose p-4 rounded-xl font-dm-sans-bold text-center mb-10">Signed up sucessfully</h1>
               
               {/* Login Button */}
               <div className="flex items-center space-y-4 justify-between">
@@ -253,7 +250,7 @@ const Register = () => {
           </div>
         </section>
       )}
-    </div>
+    </section>
   );
 };
 

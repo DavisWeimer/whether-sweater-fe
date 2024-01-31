@@ -1,0 +1,73 @@
+{
+  "data": {
+      "id": null,
+      "type": "forecast",
+      "attributes": {
+          "current_weather": {
+              "last_updated": "Jan 31 01:30 PM",
+              "temperature": 39.0,
+              "feels_like": 36.6,
+              "humidity": 64,
+              "uvi": 1.0,
+              "visibility": 9.0,
+              "condition": "Overcast",
+              "icon": "//cdn.weatherapi.com/weather/64x64/day/122.png"
+          },
+          "daily_weather": [
+              {
+                  "date": "Wed",
+                  "sunrise": "07:07 AM",
+                  "sunset": "05:12 PM",
+                  "max_temp": 39.6,
+                  "min_temp": 34.5,
+                  "condition": "Patchy rain nearby",
+                  "icon": "//cdn.weatherapi.com/weather/64x64/day/176.png"
+              },
+              {
+                  "date": "Thu",
+                  "sunrise": "07:07 AM",
+                  "sunset": "05:13 PM",
+                  "max_temp": 47.6,
+                  "min_temp": 35.6,
+                  "condition": "Partly Cloudy ",
+                  "icon": "//cdn.weatherapi.com/weather/64x64/day/116.png"
+              },
+              {
+                  "date": "Fri",
+                  "sunrise": "07:06 AM",
+                  "sunset": "05:15 PM",
+                  "max_temp": 44.4,
+                  "min_temp": 37.3,
+                  "condition": "Moderate rain",
+                  "icon": "//cdn.weatherapi.com/weather/64x64/day/302.png"
+              }
+          ],
+          "hourly_weather": [
+              {
+                  "time": "02:00 PM",
+                  "temperature": 39.1,
+                  "conditions": "Overcast ",
+                  "icon": "//cdn.weatherapi.com/weather/64x64/day/122.png"
+              },
+              {
+                  "time": "03:00 PM",
+                  "temperature": 39.2,
+                  "conditions": "Cloudy ",
+                  "icon": "//cdn.weatherapi.com/weather/64x64/day/119.png"
+              },
+              {
+                  "time": "04:00 PM",
+                  "temperature": 39.4,
+                  "conditions": "Cloudy ",
+                  "icon": "//cdn.weatherapi.com/weather/64x64/day/119.png"
+              },
+              {
+                  "time": "05:00 PM",
+                  "temperature": 39.4,
+                  "conditions": "Cloudy ",
+                  "icon": "//cdn.weatherapi.com/weather/64x64/day/119.png"
+              }
+          ]
+      }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "data": {
+      "id": null,
+      "type": "image",
+      "attributes": {
+          "image": {
+              "location": "New York City, NY",
+              "image_url": "https://images.unsplash.com/photo-1633107638683-de07246d7e8a?ixid=M3w1MDczNTV8MHwxfHNlYXJjaHw1fHxOZXclMjBZb3JrJTIwQ2l0eSUyQyUyME5ZfGVufDB8MHx8fDE3MDY3MjcwMjl8MA&ixlib=rb-4.0.3",
+              "credit": {
+                  "source": "https://unsplash.com/photos/a-view-of-a-city-from-a-tall-building-quNn-p8oxI4",
+                  "author": "Gabo Romay",
+                  "portfolio": null
+              }
+          }
+      }
+  }
+}

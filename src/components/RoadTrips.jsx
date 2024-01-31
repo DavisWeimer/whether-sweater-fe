@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useContext } from 'react'
 import { TailSpin } from 'react-loader-spinner'; 
+import RoadTripLogo from '../assets/roadtrip-planner.svg'
 import axios from '../api/axios';
 
 function RoadTrips({ authCreds })  {
@@ -50,9 +51,7 @@ function RoadTrips({ authCreds })  {
       if (!err?.response) {
         setErrMsg('No Server Response');
       } else if (err.response?.status === 422) {
-        setErrMsg('Invalid Origin or Destination');
-      } else if (err.response?.status === 422) {
-
+        setErrMsg('Missing Origin or Destination');
       }
     }
     setIsSubmitted(true);
@@ -71,7 +70,7 @@ function RoadTrips({ authCreds })  {
 
   return (
     <div className="min-h-[20em] flex flex-col bg-turq-gradient-to-t shadow-md rounded-2xl items-center border-2 border-turquiose text-offWhite font-dm-sans">
-    <h1 className="font-dm-sans text-4xl mt-12">Road Trip Planner</h1>
+    <img src={RoadTripLogo} className='w-[200px] mt-10' alt="Road Trip Logo"/>
     {!isSubmitted && <form className='flex-1 lg:px-8 pb-4 flex flex-col justify-center w-3/4'>
         <div className="mb-3">
           <label htmlFor="origin"></label>
@@ -121,7 +120,7 @@ function RoadTrips({ authCreds })  {
       {isSubmitted && 
         <div className="flex-1 px-4 py-2.5 text-md rounded-md flex flex-col justify-evenly">
           {errMsg ? (
-            <p ref={errRef} className='absolute shadow-md mt-4 left-1/2 transform -translate-x-1/2 -translate-y-20 z-20 py-2 px-2 w-3/4 text-offWhite font-dm-sans-bold text-center border-2 border-yellow-600 bg-darkGray rounded-xl'>{errMsg}</p>
+            <p ref={errRef} className='shadow-md z-20 py-2 px-2 text-offWhite font-dm-sans-bold text-center border-2 border-yellow-600 bg-darkGray rounded-xl'>{errMsg}</p>
           ) : (
             <section className="flex justify-between items-center gap-6">
             <div className="flex-col justify-center items-start gap-2.5 text-offWhite">
@@ -138,7 +137,7 @@ function RoadTrips({ authCreds })  {
             </div>
           </section>
           )}
-          <button onClick={handleNewTrip} className="bg-lightGray hover:bg-turquiose text-white hover:scale-105 ease-in duration-200 font-dm-sans py-2 px-4 mb-4 rounded w-full focus:outline-none focus:shadow-outline disabled:opacity-50 disabled:cursor-not-allowed">New Road Trip</button>
+          <button onClick={handleNewTrip} className="bg-lightGray hover:bg-turquiose text-white hover:scale-105 ease-in duration-200 font-dm-sans py-2 px-4 rounded w-full focus:outline-none focus:shadow-outline disabled:opacity-50 disabled:cursor-not-allowed">New Road Trip</button>
         </div>
     }
     </div>

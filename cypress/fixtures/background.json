@@ -1,0 +1,17 @@
+{
+  "data": {
+      "id": null,
+      "type": "image",
+      "attributes": {
+          "image": {
+              "location": "denver,co",
+              "image_url": "https://images.unsplash.com/photo-1638072252174-8806821a091e?ixid=M3w1MDczNTV8MHwxfHNlYXJjaHw4fHxkZW52ZXIlMkNjb3xlbnwwfDB8fHwxNzA2NjUwMTk2fDA&ixlib=rb-4.0.3",
+              "credit": {
+                  "source": "https://unsplash.com/photos/a-large-jetliner-sitting-on-top-of-an-airport-tarmac-M2B6SOqFPME",
+                  "author": "Joshua Sukoff",
+                  "portfolio": "http://www.joshsukoff.com"
+              }
+          }
+      }
+  }
+}
