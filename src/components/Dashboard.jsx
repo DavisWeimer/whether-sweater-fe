@@ -11,7 +11,7 @@ import RoadTrips from './RoadTrips';
 import NavBar from './NavBar';
 
 const Dashboard = () => {
-  const { auth } = useContext(AuthContext);
+  const { auth, setAuth } = useContext(AuthContext);
   const navigate = useNavigate();
   const [weather, setWeather] = useState([]);
   const [background, setBackground] = useState([]);
