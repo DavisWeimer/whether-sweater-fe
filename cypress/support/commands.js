@@ -1,3 +1,5 @@
+//////////////////////////// Login/Register/Logout Commands ////////////////////////////
+
 Cypress.Commands.add('registerUser', () => {
   cy.intercept('POST', 'http://localhost:3000/signup', {
     statusCode: 200,
@@ -56,6 +58,8 @@ Cypress.Commands.add('logoutUser', () => {
   }).as('logoutUser');
 });
 
+//////////////////////////// Endpoint Commands ////////////////////////////
+
 Cypress.Commands.add('getWeather', () => {
   cy.intercept('GET', 'http://localhost:3000/api/v0/forecast?location=Denver,+CO', {
     statusCode: 200,
@@ -70,10 +74,47 @@ Cypress.Commands.add('getBackground', () => {
   }).as('getBackground');
 });
 
+Cypress.Commands.add('getNYCWeather', () => {
+  cy.intercept('GET', 'http://localhost:3000/api/v0/forecast?location=New+York+City,+NY', {
+    statusCode: 200,
+    fixture: 'NYCweather.json',
+  }).as('getNYCWeather');
+});
+
+Cypress.Commands.add('getNYCBackground', () => {
+  cy.intercept('GET', 'http://localhost:3000/api/v0/backgrounds?location=New+York+City,+NY', {
+    statusCode: 200,
+    fixture: 'background.json',
+  }).as('getNYCBackground');
+});
+
 Cypress.Commands.add('createRoadtrip', () => {
   cy.intercept('POST', 'http://localhost:3000/api/v0/road_trips', {
     statusCode: 200,
     fixture: 'roadtrip.json',
   }).as('createRoadtrip');
 });
+
+Cypress.Commands.add('noGoRoadtrip', () => {
+  cy.intercept('POST', 'http://localhost:3000/api/v0/road_trips', {
+    statusCode: 200,
+    fixture: 'noGoRoadtrip.json',
+  }).as('noGoRoadtrip');
+});
+
+//////////////////////////// Dashboard Commands ////////////////////////////
+
+Cypress.Commands.add('userToDashboard', () => {
+  cy.visit('http://localhost:5173/login');
+  
+  cy.loginUser();
+  cy.getWeather();
+  cy.getBackground();
+
+  cy.get('input[type="text"]').as('emailField').type('let me in!');
+  cy.get('input[type="password"]').as('passwordField').type('hax');
+  cy.get('button').contains('Submit').click();
+});
+
+
 
