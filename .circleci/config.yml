@@ -5,33 +5,30 @@ version: 2.1
 # See: https://circleci.com/docs/orb-intro/
 orbs:
   cypress: cypress-io/cypress@3.3.0
+  node: circleci/node@5.0.2
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
 jobs:
-  build:
-    docker:
-      - image: cimg/node:14.17
+  build_and_test:
+    executor: node/default 
     steps:
       - checkout
-      - run: npm install
-      - run: npm run build
-
-  test:
-    docker:
-      - image: cimg/node:14.17
-    steps:
-      - checkout
-      - run: npm install
+      - node/install-packages:
+          pkg-manager: npm
       - cypress/install
       - run:
           name: Run Cypress Tests
           command: |
             npx cypress run --browser chrome
+      - run:
+          command: npm run build
+          name: Build app
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - .   
 
 workflows:
-  build_and_test:
+  build_test_deploy: # this can be any name you choose
     jobs:
-      - build
-      - test:
-          requires:
-            - build
+      - build_and_test
