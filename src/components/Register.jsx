@@ -225,7 +225,7 @@ const Register = () => {
               {/* Logo */}
               <img src={WhetherLogo} className='mb-8 mt-12' />
 
-              <h1 className="text-lg text-offWhite bg-darkGray border-2 border-green-500 rounded-xl font-dm-sans-bold text-center mb-20">Signed up sucessfully</h1>
+              <h1 className="text-lg text-offWhite bg-darkGray border-2 border-turquiose p-4 rounded-xl font-dm-sans-bold text-center mb-10">Signed up sucessfully</h1>
               
               {/* Login Button */}
               <div className="flex items-center space-y-4 justify-between">
