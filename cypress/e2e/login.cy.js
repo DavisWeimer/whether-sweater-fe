@@ -80,7 +80,7 @@ describe('Login Page', () => {
       cy.get('input[type="password"]').as('passwordField').type(password);
       cy.get('button').contains('Submit').click();
       cy.url().should('include', '/login');
-      cy.get('p.absolute').should('be.visible');
+      cy.get('p.absolute').contains('No Server Response').should('be.visible');
     });
 
     it('displays an error message when the form is submitted (somehow) with missing input', () => {
@@ -101,7 +101,7 @@ describe('Login Page', () => {
       cy.get('input[type="password"]').as('passwordField').type(password);
       cy.get('button').contains('Submit').click();
       cy.url().should('include', '/login');
-      cy.get('p.absolute').should('be.visible');
+      cy.get('p.absolute').contains('Missing Email or Password').should('be.visible');
     });
 
     it ('displays and error when all else fails', () => {
@@ -122,7 +122,7 @@ describe('Login Page', () => {
       cy.get('input[type="password"]').as('passwordField').type(password);
       cy.get('button').contains('Submit').click();
       cy.url().should('include', '/login');
-      cy.get('p.absolute').should('be.visible');
+      cy.get('p.absolute').contains('Login Failed').should('be.visible');
     });
   });
 });
