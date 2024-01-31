@@ -1,6 +1,11 @@
 Cypress.Commands.add('registerUser', () => {
   cy.intercept('POST', 'http://localhost:3000/signup', {
     statusCode: 200,
+    headers: {
+      "content-type": "application/json; charset=utf-8",
+      "authorization": "Bearer McToken",
+      "Access-Control-Expose-Headers": "access-token, expiry, token-type, Authorization",
+    },
     body: {
       "status": {
         "code": 200,
