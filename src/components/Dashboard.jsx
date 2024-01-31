@@ -96,9 +96,15 @@ const Dashboard = () => {
     <>
       {locationSearch ? (
         <div className='fixed w-full h-screen bg-gradient-to-t from-turquiose to-darkGray flex flex-col justify-center items-center z-20'>
-          <form onSubmit={handleSubmit} className='flex-1 lg:px-8 pb-4 flex flex-col justify-center w-3/4'>
-            <Select options={cities} onChange={(selectedOption) => setLocation(selectedOption.value)} />
-            <button type="submit" disabled={!location} className="bg-lightGray hover:bg-turquiose text-white flex justify-center hover:scale-105 ease-in duration-200 font-dm-sans py-2 px-4 rounded w-full focus:outline-none focus:shadow-outline disabled:opacity-50 disabled:cursor-not-allowed">
+          <button 
+            onClick={() => setLocationSearch(false)}
+            className="absolute top-0 right-0 m-4 text-offWhite font-bold text-5xl hover:scale-110 ease-in duration-200 hover:text-turquiose focus:outline-none"
+          >
+            &times;
+          </button>
+          <form onSubmit={handleSubmit} className='flex-1 gap-3 lg:px-8 pb-4 flex flex-col justify-center w-3/4 md:w-1/3'>
+            <Select options={cities} onChange={(selectedOption) => setLocation(selectedOption.value)} className='react-select-container'/>
+            <button type="submit" disabled={!location} className="bg-darkGray hover:bg-turquiose hover:text-darkGray text-offWhite flex justify-center hover:scale-105 ease-in duration-200 font-dm-sans py-2 px-4 rounded w-full focus:outline-none focus:shadow-outline disabled:opacity-50 disabled:cursor-not-allowed">
               {locationLoading ? (
                 <TailSpin height="24" width="24" color="#E4E2DD" ariaLabel="tail-spin-loading" radius="1" />
               ) : 'Submit'}
