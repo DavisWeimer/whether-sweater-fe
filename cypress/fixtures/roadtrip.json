@@ -1,0 +1,16 @@
+{
+  "data": {
+      "id": null,
+      "type": "road_trip",
+      "attributes": {
+          "start_city": "Denver,CO",
+          "end_city": "New York",
+          "travel_time": "24:54:06",
+          "weather_at_eta": {
+              "datetime": "2024-01-30 13:23",
+              "condition": "Overcast",
+              "temperature": 37.9
+          }
+      }
+  }
+}
