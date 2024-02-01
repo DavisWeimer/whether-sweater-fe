@@ -1,12 +1,13 @@
 <div align='center'>
   <img src="https://github.com/DavisWeimer/whether-sweater-fe/assets/128326999/be371417-729a-4f97-a5ba-72a6e43a0344" style="width: 400px" />
 
-  ![Commits](https://badgen.net/github/last-commit/DavisWeimer/whether-sweater-fe?icon=github)
+  ![GitHub last commit](https://img.shields.io/github/last-commit/DavisWeimer/whether-sweater-fe?style=plastic)
+  ![NPM Version](https://img.shields.io/npm/v/react?style=plastic)
 
   #### Let's Connect!
-  <a target="_blank" href="https://www.linkedin.com/in/davis-weimer/" rel="noopener noreferrer"><img src="https://img.shields.io/badge/-LinkedIn-303030?style=for-the-badge&logo=Linkedin&logoColor=00C6BA"></img></a>
-  <a target="_blank" href="mailto:davisweimer@gmail.com" rel="noopener noreferrer"><img src="https://img.shields.io/badge/-Gmail-303030?style=for-the-badge&logo=Gmail&logoColor=00C6BA"></img></a>
-  <a target="_blank" href="https://www.dw-portfolio.com/" rel="noopener noreferrer"><img src="https://img.shields.io/badge/-Portfolio-303030?style=for-the-badge&logo=Vercel&logoColor=00C6BA"></img></a>
+  <a target="_blank" href="https://www.linkedin.com/in/davis-weimer/" rel="noopener noreferrer"><img src="https://img.shields.io/badge/-LinkedIn-303030?style=plastic&logo=Linkedin&logoColor=00C6BA"></img></a>
+  <a target="_blank" href="mailto:davisweimer@gmail.com" rel="noopener noreferrer"><img src="https://img.shields.io/badge/-Gmail-303030?style=plastic&logo=Gmail&logoColor=00C6BA"></img></a>
+  <a target="_blank" href="https://www.dw-portfolio.com/" rel="noopener noreferrer"><img src="https://img.shields.io/badge/-Portfolio-303030?style=plastic&logo=Vercel&logoColor=00C6BA"></img></a>
   </div>
 
 </div>
@@ -35,7 +36,11 @@ npm install npm@latest -g
 
 Site Preview
 -------------
-![app-demo-gif](https://github.com/DavisWeimer/whether-sweater-fe/assets/128326999/8a16b980-f958-4679-9576-1548d069fd70)
+<div align='center'>
+  
+  ![whether-sweater-demo-ezgif com-video-to-gif-converter](https://github.com/DavisWeimer/whether-sweater-fe/assets/128326999/0b9b7f27-996d-4e60-9dad-50771aed0195)
+
+</div>  
 
 ## Contributing
 Contributions are what make the open-source community such an amazing place to create in. Any contributions you make are **greatly appreciated**.
