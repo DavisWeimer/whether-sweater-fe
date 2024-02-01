@@ -13,18 +13,18 @@
 
 </div>
 
-## Introduction
+# Introduction
 Whether, Sweater? is an innovative app designed to integrate weather forecasting with your travel plans. It provides real-time weather forecasts for any city and offers the ability to create a road trip showing travel time and destination forecast.
 
-## Features
+# Features
 - **User Authentication**: Secure registration, login/logout functionality using JWT sessions.
 - **Weather Forecasting**: Select a city to view its current weather and upcoming forecast.
 - **Road Trip Planning**: Input your trip details to receive estimated travel times and weather conditions upon arrival.
 
-## Built with<br>
+# Built with<br>
 <img src="https://skillicons.dev/icons?i=react,nodejs,vite,tailwind,vscode,vercel,figma" alt="My languages"/>
 
-## Getting Started
+# Getting Started
 To get a local copy up and running, git clone and follow these steps.
 ##### *NOTE:* Please message me for the `.env` variables
 
@@ -35,15 +35,14 @@ To get a local copy up and running, git clone and follow these steps.
 npm install npm@latest -g
 ```
 
-Site Preview
--------------
+# Site Preview
 <div align='center'>
   
   ![whether-sweater-demo-ezgif com-video-to-gif-converter](https://github.com/DavisWeimer/whether-sweater-fe/assets/128326999/0b9b7f27-996d-4e60-9dad-50771aed0195)
 
 </div>  
 
-## Contributing
+# Contributing
 Contributions are what make the open-source community such an amazing place to create in. Any contributions you make are **greatly appreciated**.
 #### *NOTE:* Please message me for the `.env` variables
 
@@ -53,13 +52,12 @@ Contributions are what make the open-source community such an amazing place to c
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## Acknowledgements
+# Acknowledgements
 - [Weather API](https://www.weatherapi.com/) - Weather data source.
 - [Mapquest API](https://developer.mapquest.com/) - Location data source.
 - [Unsplash API](https://unsplash.com/) - Photo source.
 - [React Documentation](https://reactjs.org/) - For React resources and tutorials.
 
 
-Check it out here:
--------------
+# Check it out here:
 #### https://whether-sweater-fe.vercel.app/
