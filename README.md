@@ -5,9 +5,9 @@
   ![NPM Version](https://img.shields.io/npm/v/react?style=plastic)
 
   #### Let's Connect!
-  <a target="_blank" href="https://www.linkedin.com/in/davis-weimer/" rel="noopener noreferrer"><img src="https://img.shields.io/badge/-LinkedIn-303030?style=plastic&logo=Linkedin&logoColor=00C6BA"></img></a>
-  <a target="_blank" href="mailto:davisweimer@gmail.com" rel="noopener noreferrer"><img src="https://img.shields.io/badge/-Gmail-303030?style=plastic&logo=Gmail&logoColor=00C6BA"></img></a>
-  <a target="_blank" href="https://www.dw-portfolio.com/" rel="noopener noreferrer"><img src="https://img.shields.io/badge/-Portfolio-303030?style=plastic&logo=Vercel&logoColor=00C6BA"></img></a>
+  <a target="_blank" href="https://www.linkedin.com/in/davis-weimer/" rel="noopener noreferrer"><img src="https://img.shields.io/badge/-LinkedIn-303030?style=for-the-badge&logo=Linkedin&logoColor=00C6BA"></img></a>
+  <a target="_blank" href="mailto:davisweimer@gmail.com" rel="noopener noreferrer"><img src="https://img.shields.io/badge/-Gmail-303030?style=for-the-badge&logo=Gmail&logoColor=00C6BA"></img></a>
+  <a target="_blank" href="https://www.dw-portfolio.com/" rel="noopener noreferrer"><img src="https://img.shields.io/badge/-Portfolio-303030?style=for-the-badge&logo=Vercel&logoColor=00C6BA"></img></a>
   </div>
 
 </div>
