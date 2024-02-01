@@ -3,6 +3,7 @@
 
   ![GitHub last commit](https://img.shields.io/github/last-commit/DavisWeimer/whether-sweater-fe?style=plastic)
   ![NPM Version](https://img.shields.io/npm/v/react?style=plastic)
+  ![Static Badge](https://img.shields.io/badge/tests-passing-green?style=plastic&color=4CBB17)
 
   #### Let's Connect!
   <a target="_blank" href="https://www.linkedin.com/in/davis-weimer/" rel="noopener noreferrer"><img src="https://img.shields.io/badge/-LinkedIn-303030?style=for-the-badge&logo=Linkedin&logoColor=00C6BA"></img></a>
